@@ -16,8 +16,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void citySelectedChanged();
+
 private:
     Ui::MainWindow *ui;
     AirQuality AQI;
+    void setUi();
 };
 #endif // MAINWINDOW_H
