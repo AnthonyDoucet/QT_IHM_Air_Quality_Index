@@ -4,7 +4,7 @@ AirQuality::AirQuality(){
 
 }
 
-bool AirQuality::getFromCity(QString city){
+int AirQuality::getFromCity(QString city){
     QUrl url = QString("https://" + _api + "/feed/" + city + "/?token=" + _token);
     qDebug() << url;
 
@@ -12,24 +12,24 @@ bool AirQuality::getFromCity(QString city){
     QJsonObject jroot = jsonResponse.object();
 
     if(jroot["status"] != "ok"){
-        return 0;
+        return -1;
     }
     QJsonObject jdata = jroot["data"].toObject();
     _aqi = jdata["aqi"].toInt();
-    qDebug() << _aqi;
+    //qDebug() << _aqi;
 
     QJsonObject jcity = jdata["city"].toObject();
     _cityName = jcity["name"].toString();
-    qDebug() << _cityName;
+    //qDebug() << _cityName;
 
     QJsonArray jgeo = jcity["geo"].toArray();
     _coords[0] = jgeo[0].toDouble();
     _coords[1] = jgeo[1].toDouble();
-    qDebug() << _coords;
+    //qDebug() << _coords;
 
     QJsonObject jtime = jdata["time"].toObject();
     _time = jtime["s"].toString();
-    qDebug() << _time;
+    //qDebug() << _time;
 
     return 1;
 }

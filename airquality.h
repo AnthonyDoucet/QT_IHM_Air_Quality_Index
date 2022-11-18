@@ -11,7 +11,7 @@ class AirQuality
 {
 public:
     AirQuality();
-    bool getFromCity(QString city);
+    int getFromCity(QString city);
 
     int getAqi() {return _aqi;};
     QString getCityName(){ return _cityName;};
