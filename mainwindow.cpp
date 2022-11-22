@@ -74,19 +74,18 @@ void MainWindow::search(){
 
     if(AQI.getFromSearch(input)){
         unsigned size = AQI.getCityArraySize();
-        qDebug() << size;
-
         ui->comboBoxSearch->clear();
         for(unsigned i=0 ; i < size ; i++){
             ui->comboBoxSearch->addItem(AQI.getCityName(i));
         }
-        //setUi();
+        if(AQI.getFromID(0)){
+            setUi();
+        }
     }
 }
 
 
 void MainWindow::comboBoxSearchIndexChanged(int index){
-    qDebug() << "Combobox Search: " << index;
     if(index > 0){
         if(AQI.getFromID(index)){
             setUi();

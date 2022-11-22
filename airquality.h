@@ -34,11 +34,14 @@ private:
     QString _api = "api.waqi.info";
     QString _token = "d9636de539c0cc32e3771e378fd51527b70526f1";
     QString _ErrMessage;
+    QJsonArray jdataArray;
+    void getFromLocalJson(unsigned id);
 
     unsigned _cityArraySize;
     unsigned *_cityArrayID;
     QVector<QString> _cityArrayName;
 
+    bool _valStoredLocaly;
     int _aqi;
     QString _cityName;
     double _coords[2];

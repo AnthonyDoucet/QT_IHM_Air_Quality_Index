@@ -1,8 +1,6 @@
 #include "airquality.h"
 
-AirQuality::AirQuality(){
-
-}
+AirQuality::AirQuality(){}
 
 int AirQuality::getFromCity(QString city){
     QUrl url = QString("https://" + _api + "/feed/" + city + "/?token=" + _token);
@@ -11,6 +9,10 @@ int AirQuality::getFromCity(QString city){
 }
 
 int AirQuality::getFromID(unsigned id){
+    if(_valStoredLocaly){
+        getFromLocalJson(id);
+        return 1;
+    }
     QUrl url = QString("https://" + _api + "/feed/@" + QString::number(_cityArrayID[id]) + "/?token=" + _token);
     qDebug() << "[FEED ID URL] " << url;
     return sendURL(url);
@@ -43,7 +45,6 @@ int AirQuality::sendURL(QUrl url){
     return 1;
 }
 
-
 int AirQuality::getFromSearch(QString input){
     QUrl url = QString("https://" + _api + "/search/?keyword=" + input + "&token=" + _token);
     qDebug() << "[SEARCH URL] " << url;
@@ -51,7 +52,7 @@ int AirQuality::getFromSearch(QString input){
     QJsonDocument jsonResponse = QJsonDocument::fromJson( get(url) );
     QJsonObject jroot = jsonResponse.object();
 
-    qDebug() << "[JSON RESPONSE] " << jsonResponse.toJson();
+    //qDebug() << "[JSON RESPONSE] " << jsonResponse.toJson();
 
     if(jroot["status"] != "ok"){
         if(jroot["message"].isString()){
@@ -61,39 +62,42 @@ int AirQuality::getFromSearch(QString input){
     }
 
     if(jroot["data"].isArray()){
-        QJsonArray jdata = jroot["data"].toArray();
-        _cityArraySize = jdata.size();
+        jdataArray = jroot["data"].toArray();
+        _cityArraySize = jdataArray.size();
+        qDebug() << "[CITY LIST] " << _cityArraySize;
 
-        qDebug() << "[CITY LIST] :";
         _cityArrayID = new unsigned[_cityArraySize];
         _cityArrayName.erase(_cityArrayName.begin(),_cityArrayName.end());
 
         for(unsigned i=0 ; i < _cityArraySize ; i++){
-            QJsonObject j = jdata[i].toObject();
+            QJsonObject j = jdataArray[i].toObject();
             _cityArrayID[i] = j["uid"].toInt();
 
             QJsonObject jcity = j["station"].toObject();
             _cityArrayName.append(jcity["name"].toString());
-
-            qDebug() << _cityArrayName.at(i) << "  " << _cityArrayID[i];
         }
-    }
-    else{
-        QJsonObject jdata = jroot["data"].toObject();
-        _aqi = jdata["aqi"].toInt();
-
-        QJsonObject jcity = jdata["city"].toObject();
-        _cityName = jcity["name"].toString();
-
-        QJsonArray jgeo = jcity["geo"].toArray();
-        _coords[0] = jgeo[0].toDouble();
-        _coords[1] = jgeo[1].toDouble();
-
-        QJsonObject jtime = jdata["time"].toObject();
-        _time = jtime["s"].toString();
+        _valStoredLocaly = true;
     }
 
     return 1;
+}
+
+void AirQuality::getFromLocalJson(unsigned id){
+    qDebug() << "[LOCAL READ] " << id;
+
+    QJsonObject jtemp = jdataArray[id].toObject();
+    //qDebug() << jtemp;
+    _aqi = jtemp["aqi"].toInt();
+
+    QJsonObject jcity = jtemp["station"].toObject();
+    _cityName = jcity["name"].toString();
+
+    QJsonArray jgeo = jcity["geo"].toArray();
+    _coords[0] = jgeo[0].toDouble();
+    _coords[1] = jgeo[1].toDouble();
+
+    QJsonObject jtime = jtemp["time"].toObject();
+    _time = jtime["stime"].toString();
 }
 
 QByteArray AirQuality::get(QUrl url){
