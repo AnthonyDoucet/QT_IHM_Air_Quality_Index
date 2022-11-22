@@ -1,0 +1,28 @@
+var class_air_quality =
+[
+    [ "AirQuality", "class_air_quality.html#ab2407a74ee37a9af74c677f22095f624", null ],
+    [ "getAqi", "class_air_quality.html#a3ffe896e5a26e6b5dca1063bbdf012ed", null ],
+    [ "getCityLat", "class_air_quality.html#a13cc46723e6e348c5d70552ae1d2183d", null ],
+    [ "getCityLon", "class_air_quality.html#aab89736672d4c371e72223703cc73019", null ],
+    [ "getCityName", "class_air_quality.html#a16bac8243f67fe7b8fbf14941428a2d8", null ],
+    [ "getCityName", "class_air_quality.html#a290fc91635a079f9329147a7973c6c80", null ],
+    [ "getCityNumber", "class_air_quality.html#aba55de67538537cd1880e00881c9b101", null ],
+    [ "getErrorMessage", "class_air_quality.html#ad13dc54551cf613dd3eb3606ee7b1b28", null ],
+    [ "getFromCity", "class_air_quality.html#aa56585cf0189f5536c0d25550ae081d8", null ],
+    [ "getFromID", "class_air_quality.html#a6a19b714d948344af00296af6c4a9554", null ],
+    [ "getFromSearch", "class_air_quality.html#aaa76c8dd9d6a1142d2adcc0c38981d5e", null ],
+    [ "getTime", "class_air_quality.html#a6d062bc46c51f8d3841ee2e16cf86eb6", null ],
+    [ "_api", "class_air_quality.html#a00a2c8bf2a6102370ffa7d64fb9fd7bb", null ],
+    [ "_aqi", "class_air_quality.html#a3d4575a41ddf06f72c593b6b5473dff9", null ],
+    [ "_cityArrayID", "class_air_quality.html#a8e38a43c518806cca333c6ed4532d88b", null ],
+    [ "_cityArrayName", "class_air_quality.html#a55e563a830abd16f45791230b8091c0c", null ],
+    [ "_cityArraySize", "class_air_quality.html#a3865b5f6aa285652cde041f72910c4ed", null ],
+    [ "_cityName", "class_air_quality.html#aff2bee79d64ef59a292ff83c61da8f7e", null ],
+    [ "_coords", "class_air_quality.html#ae740cb83c919e2e4afeab2964e6e5223", null ],
+    [ "_ErrMessage", "class_air_quality.html#a967d78637637017228f657ec47ae9b2b", null ],
+    [ "_networkManager", "class_air_quality.html#ae0ffb585b8d924d6d4598d939a555bd5", null ],
+    [ "_time", "class_air_quality.html#ad1a15365372b4cce00b7baa3fbed2eab", null ],
+    [ "_token", "class_air_quality.html#a49685a72dd61483fc8d49af60454a2d6", null ],
+    [ "_valStoredLocaly", "class_air_quality.html#a2362d1038ef1c5a01f31cbede7d3ba0b", null ],
+    [ "jdataArray", "class_air_quality.html#a74f973da2844641483a7e5bc34711ff9", null ]
+];
