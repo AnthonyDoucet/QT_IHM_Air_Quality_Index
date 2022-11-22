@@ -1,3 +1,14 @@
+/**
+ * @file airquality.cpp
+ * @author Anthony Doucet
+ * @brief 
+ * @version 0.1
+ * @date 2022-11-22
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "airquality.h"
 
 AirQuality::AirQuality(){}

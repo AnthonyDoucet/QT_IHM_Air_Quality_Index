@@ -1,3 +1,13 @@
+/**
+ * @file mainwindow.cpp
+ * @author Anthony Doucet
+ * @brief 
+ * @version 0.1
+ * @date 2022-11-22
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -23,7 +33,6 @@ void MainWindow::citySelectedChanged(){
         qDebug() << "Error getFromCity()";
     }
 }
-
 
 void MainWindow::setUi(){
     ui->cityName->setText(AQI.getCityName());
@@ -68,14 +77,12 @@ void MainWindow::setUi(){
     ui->time->setText(AQI.getTime());
 }
 
-
 void MainWindow::search(){
     QString input = ui->searchBar->text();
-
     if(AQI.getFromSearch(input)){
-        unsigned size = AQI.getCityArraySize();
+        unsigned number = AQI.getCityNumber();
         ui->comboBoxSearch->clear();
-        for(unsigned i=0 ; i < size ; i++){
+        for(unsigned i=0 ; i < number ; i++){
             ui->comboBoxSearch->addItem(AQI.getCityName(i));
         }
         if(AQI.getFromID(0)){
@@ -84,8 +91,7 @@ void MainWindow::search(){
     }
 }
 
-
-void MainWindow::comboBoxSearchIndexChanged(int index){
+void MainWindow::searchSelectedChanged(int index){
     if(index > 0){
         if(AQI.getFromID(index)){
             setUi();

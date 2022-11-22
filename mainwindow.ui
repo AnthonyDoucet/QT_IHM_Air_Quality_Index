@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>573</width>
+    <width>574</width>
     <height>246</height>
    </rect>
   </property>
@@ -286,7 +286,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>573</width>
+     <width>574</width>
      <height>21</height>
     </rect>
    </property>
@@ -347,7 +347,7 @@
    <sender>comboBoxSearch</sender>
    <signal>currentIndexChanged(int)</signal>
    <receiver>MainWindow</receiver>
-   <slot>comboBoxSearchIndexChanged(int)</slot>
+   <slot>searchSelectedChanged(int)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>415</x>
@@ -363,6 +363,6 @@
  <slots>
   <slot>citySelectedChanged()</slot>
   <slot>search()</slot>
-  <slot>comboBoxSearchIndexChanged(int)</slot>
+  <slot>searchSelectedChanged(int)</slot>
  </slots>
 </ui>
