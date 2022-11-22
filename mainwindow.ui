@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>616</width>
-    <height>219</height>
+    <width>573</width>
+    <height>246</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>20</y>
+      <x>580</x>
+      <y>10</y>
       <width>141</width>
       <height>24</height>
      </rect>
@@ -52,9 +52,9 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>20</y>
-      <width>441</width>
+      <x>10</x>
+      <y>50</y>
+      <width>551</width>
       <height>141</height>
      </rect>
     </property>
@@ -74,7 +74,7 @@
        <item>
         <widget class="QLabel" name="cityName">
          <property name="text">
-          <string>TextLabel</string>
+          <string/>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -108,7 +108,7 @@
        <item>
         <widget class="QLabel" name="cityCoordinate">
          <property name="text">
-          <string>0.0000000</string>
+          <string/>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -145,10 +145,10 @@
        <item>
         <widget class="QLabel" name="airQualityConverted">
          <property name="text">
-          <string>TextLabel</string>
+          <string/>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -186,7 +186,7 @@
           <item>
            <widget class="QLabel" name="airQuality">
             <property name="text">
-             <string>TextLabel</string>
+             <string/>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -223,7 +223,7 @@
        <item>
         <widget class="QLabel" name="time">
          <property name="text">
-          <string>TextLabel</string>
+          <string/>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -247,13 +247,46 @@
      </item>
     </layout>
    </widget>
+   <widget class="QLineEdit" name="searchBar">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>141</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSearch">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>10</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Search</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxSearch">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>10</y>
+      <width>291</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>616</width>
+     <width>573</width>
      <height>21</height>
     </rect>
    </property>
@@ -262,6 +295,38 @@
  </widget>
  <resources/>
  <connections>
+  <connection>
+   <sender>searchBar</sender>
+   <signal>returnPressed()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>search()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>80</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>410</x>
+     <y>122</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnSearch</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>search()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>199</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>410</x>
+     <y>122</y>
+    </hint>
+   </hints>
+  </connection>
   <connection>
    <sender>comboBox</sender>
    <signal>currentIndexChanged(int)</signal>
@@ -278,8 +343,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>comboBoxSearch</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>comboBoxSearchIndexChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>415</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>122</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>citySelectedChanged()</slot>
+  <slot>search()</slot>
+  <slot>comboBoxSearchIndexChanged(int)</slot>
  </slots>
 </ui>
