@@ -4,8 +4,8 @@
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
-    AQI.getFromCity("clermont-ferrand");
-    setUi();
+    //AQI.getFromCity("clermont-ferrand");
+    //setUi();
 }
 
 MainWindow::~MainWindow(){
@@ -22,7 +22,6 @@ void MainWindow::citySelectedChanged(){
     else{
         qDebug() << "Error getFromCity()";
     }
-
 }
 
 
@@ -31,7 +30,6 @@ void MainWindow::setUi(){
 
     QString coords = QString::number(AQI.getCityLat()) + " : " + QString::number(AQI.getCityLon());
     ui->cityCoordinate->setText(coords);
-
 
     int value = AQI.getAqi();
     QString status;
@@ -68,5 +66,31 @@ void MainWindow::setUi(){
     ui->airQualityConverted->setText(status);
     ui->airQuality->setText(QString::number(value));
     ui->time->setText(AQI.getTime());
+}
+
+
+void MainWindow::search(){
+    QString input = ui->searchBar->text();
+
+    if(AQI.getFromSearch(input)){
+        unsigned size = AQI.getCityArraySize();
+        qDebug() << size;
+
+        ui->comboBoxSearch->clear();
+        for(unsigned i=0 ; i < size ; i++){
+            ui->comboBoxSearch->addItem(AQI.getCityName(i));
+        }
+        //setUi();
+    }
+}
+
+
+void MainWindow::comboBoxSearchIndexChanged(int index){
+    qDebug() << "Combobox Search: " << index;
+    if(index > 0){
+        if(AQI.getFromID(index)){
+            setUi();
+        }
+    }
 }
 

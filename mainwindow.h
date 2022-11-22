@@ -19,6 +19,10 @@ public:
 private slots:
     void citySelectedChanged();
 
+    void search();
+
+    void comboBoxSearchIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     AirQuality AQI;
