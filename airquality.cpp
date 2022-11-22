@@ -98,7 +98,7 @@ void AirQuality::getFromLocalJson(unsigned id){
 
     QJsonObject jtemp = jdataArray[id].toObject();
     //qDebug() << jtemp;
-    _aqi = jtemp["aqi"].toInt();
+    _aqi = jtemp["aqi"].toString().toInt();
 
     QJsonObject jcity = jtemp["station"].toObject();
     _cityName = jcity["name"].toString();
